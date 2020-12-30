@@ -1,0 +1,51 @@
+
+<h5><span class="glyphicon glyphicon-shopping-cart" ></span> Shopping Cart</h5>
+<br>
+<button type="button" class="btn btn-secondary btn-sm ">
+    <span class="glyphicon glyphicon-share-alt"></span> Continue shopping
+</button>
+
+<div class="container" *ngFor="let i of items; let idx = index">
+  <div class="panel panel-succes">
+      <div class="panel-heading">
+          <div class="row">
+              <div class="col-xs-1">
+                  {{  i.product["name"]  }}                          
+             </div>
+              <div class="col-xs-3">
+                  <input #box type="number"
+                 [value]="i.quantity"
+                 min="1" max="20"
+                 (change)="onchange(idx, +box.value)" />                
+              </div>
+
+              <div class="col-xs-5">
+                  <span style="border: 1px solid red;">
+                     CAD:&nbsp;{{ i.quantity * i.product.price  }}
+                  </span>                  
+               </div>
+
+              <div class="col-xs-3">
+                  <a class="glyphicon glyphicon-trash"  title="remove item" (click)="remove(idx)" ></a>&nbsp;
+                  <a class="glyphicon glyphicon-heart"  title="add to wish list" ></a>
+                 
+              </div>  
+
+           </div>
+        </div>
+      </div> 
+  
+</div>
+  
+   <div class="panel-footer">
+    <b>Estimate Total: CAD {{ getTotal()  }}</b> 
+  </div> 
+  <br> 
+  <div class=" col-xs-3">
+   <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">GO TO CHECKOUT</a>   
+ </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  

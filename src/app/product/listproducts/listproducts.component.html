@@ -1,0 +1,114 @@
+
+<!-- <div class="panel panel-success" *ngFor="let pro of products">
+    <div *ngIf="ifLogin()">
+    <div class="panel-heading">
+        <h3>{{ pro.name }}</h3>
+    </div>
+
+    <div class="panel-body">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-6">
+                    <img [src]="pro.photoPath" class="image">
+                </div>
+
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            Name
+                        </div>
+                        <div class="col-xs-8">
+                            : {{ pro.name }}
+                        </div>
+                    </div> 
+                   
+                    <div class="row">
+                        <div class="col-xs-4">
+                            Price
+                        </div>
+                        <div class="col-xs-8">
+                            : {{ pro.price }}
+                        </div>
+                        <div class="row">
+                        </br>
+                    </br>
+                            <div class="col-xs-4">
+                                Description:
+                            </div>
+                            <div class="col-xs-8">
+                                : {{ pro.description}}
+                            </div>
+                    </div>  
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <hr>
+                            <label for="qty">Qty</label>
+                            <input #myInput 
+                            id ="qty"
+                             type="number"
+                              min="1" 
+                              max="20" 
+                              value ="1" 
+                              class="inputnumber"
+                              /><br>
+                     
+                            <a (click)="addCartData(pro.id, +myInput.value)">Add to the cart</a><br>
+                            <span id="result" ></span>
+                          
+                        </div>
+                        
+                    </div>                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <a class="glyphicon glyphicon-screenshot" (click)="clearCartData()" ></a>
+      
+        
+    </div>
+    </div>
+</div>	
+  
+
+		
+ -->
+ <div class="row">
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let product of products">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="{{product.photoPath}}" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a routerLink="product/{{product.id}}">{{ product.name }}</a>
+          </h4>
+          <h5>CAD {{ product.price }}</h5>
+          <p class="card-text">{{ product.description}}</p>
+          <div class="col-xs-12">
+            <hr>
+            <label for="qty">Qty: </label>
+            <input #myInput id="qty" type="number" min="1" max="20" value="1"
+                class="inputnumber" /><br>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-primary product-btn" (click)="addCartData(product.id, +myInput.value)">Add to
+                        Cart</button>
+                        <span id="result" ></span>
+                      <button type="button" class="btn btn-sm btn-outline-secondary product-btn">View Details</button>
+                    </div>
+
+           <!-- 
+            <a (click)="addCartData(product.id, +myInput.value)">Add to the cart</a><br>
+            <span id="result" ></span> -->
+        </div>
+        </div>
+    
+      </div>
+      
+  <div class="panel-footer" *ngIf="ifLogin()">
+    <a class="glyphicon glyphicon-screenshot" (click)="clearCartData()" ></a>
+    <a class="glyphicon glyphicon-floppy-saved" href="\create" title="Add " ></a>   
+    <a class="glyphicon glyphicon-remove" (click)="remove(product.id)" title="Remove" ></a>
+    </div>
+  </div>
+</div>

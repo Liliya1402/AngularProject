@@ -1,0 +1,65 @@
+
+
+
+<form #createMenuItem="ngForm" 
+ngNativeValidate 
+(ngSubmit)="saveProduct"> 
+<div class="panel panel-success">
+
+    <div class="panel-heading">
+        <h4 class="panel-title">Create Product</h4>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-group"
+        [class.has-error]="nameControl.invalid && nameControl.touched"
+        [class.has-success]="nameControl.valid" >
+            <label for="inputName" 
+                class="center-block control-label">Name: </label>
+            <input id="inputName" name="name" 
+                class="form-control" type="text"
+                [(ngModel)]="product.name" 
+                required
+                #nameControl="ngModel"
+                />
+            <span class="help-block" 
+                *ngIf="nameControl.invalid && nameControl.touched">
+                Name is required
+            </span>
+        </div>
+        <div class="form-group">
+            <label for="inputPrice" 
+                class="center-block control-label">Price: </label>
+            <input id="inputPrice" name="price" [(ngModel)]="product.price" class="form-control" type="text"
+                />
+        </div>
+        <div class="form-group">
+            <label for="photoPath" 
+                class="center-block control-label">Photo Path: </label>
+            <input id="photoPath" name="photoPath" [(ngModel)]="product.photoPath" class="form-control" type="text"
+                />
+        </div>
+
+        <div class="form-group">
+            <button type="button" (click)="togglePhotoPreview()" class="btn btn-outline-info btn-sm">
+                {{previewPhoto ? "Hide " : "Show " }} Preview
+            </button>
+        </div>
+        <div class="form-group">
+            <img [src]="product.photoPath" height="250" width="200"
+                    *ngIf="previewPhoto" />
+            </div>
+            <div class="form-group">
+                <label for="inputDescription" 
+                    class="center-block control-label">Description: </label>
+                <input id="inputdescription" name="description" [(ngModel)]="product.description" class="form-control" type="text"
+                    />
+            </div> 
+            
+    </div>
+    <div class="panel-footer">
+        <button type="submit" class="btn btn-primary"
+            [disabled]="saveProduct">Save</button>
+    </div>
+</div>
+</form>
